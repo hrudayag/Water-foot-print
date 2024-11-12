@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            background-color: #4a90e2;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        .form-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px; /* Add spacing between sections */
+            border-left: 5px solid #4a90e2; /* Add a left border for emphasis */
+        }
+        .form-section h2 {
+            color: #4a90e2; /* Make headers more prominent */
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            font-size: 1.1em;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .input-group input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+        .submit-button {
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .submit-button:hover {
+            background-color: #357ab7;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #333;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Water Footprint Calculator</h1>
+    <p>Discover your daily water usage and how you can conserve water.</p>
+</header>
+
+<nav>
+    <a href="#calculator">Calculator</a>
+    <a href="#tips">Tips</a>
+    <a href="#contact">Contact</a>
+</nav>
+<div class="container">
+    <section id="calculator" class="form-section">
+        <h2>Calculate Your Water Footprint</h2>
+        <div class="input-group">
+            <label for="showers">How many minutes do you shower daily?</label>
+            <input type="number" id="showers" placeholder="Enter minutes" />
+        </div>
+        <div class="input-group">
+            <label for="drinkingWater">How much drinking water do you consume daily (in liters)?</label>
+            <input type="number" id="drinkingWater" placeholder="Enter liters" />
+        </div>
+        <div class="input-group">
+            <label for="laundry">How many laundry loads do you do weekly?</label>
+            <input type="number" id="laundry" placeholder="Enter loads per week" />
+        </div>
+        <div class="input-group">
+            <label for="dishwashing">How many times do you wash dishes daily?</label>
+            <input type="number" id="dishwashing" placeholder="Enter times per day" />
+        </div>
+        <div class="input-group">
+            <label for="gardening">How much water do you use for gardening daily (in liters)?</label>
+            <input type="number" id="gardening" placeholder="Enter liters" />
+        </div>
+        <button class="submit-button" onclick="calculateFootprint()">Calculate Water Footprint</button>
+
+        <div class="result" id="result"></div>
+    </section>
+
+    <section id="tips" class="form-section">
+        <h2>Ways to Reduce Your Water Footprint</h2>
+        <ul>
+            <li>Take shorter showers.</li>
+            <li>Fix leaks in your home to prevent wastage.</li>
+            <li>Turn off the tap while brushing your teeth.</li>
+            <li>Choose water-efficient appliances.</li>
+            <li>Reduce meat consumption as livestock requires vast amounts of water.</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="form-section">
+        <h2>Contact Us</h2>
+        <p>For more information or support, contact us at <a href="mailto:guttikonda.hrudaya2022@vitstudent.ac.in">guttikonda.hrudaya2022@vitstudent.ac.in</a></p>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 Hrudaya Guttikonda 22BCE3348. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function calculateFootprint() {
+        let showers = parseFloat(document.getElementById('showers').value) || 0;
+        let drinkingWater = parseFloat(document.getElementById('drinkingWater').value) || 0;
+        let laundry = parseFloat(document.getElementById('laundry').value) || 0;
+        let dishwashing = parseFloat(document.getElementById('dishwashing').value) || 0;
+        let gardening = parseFloat(document.getElementById('gardening').value) || 0;
+        let footprint = (showers * 10) + drinkingWater + (laundry * 50 / 7) + (dishwashing * 10) + gardening;
+        document.getElementById('result').innerHTML = `Your estimated daily water footprint is <strong>${footprint.toFixed(2)} liters</strong>.`;
+    }
+</script>
+</body>
+</html>

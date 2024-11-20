@@ -134,6 +134,24 @@
             <label for="gardening">How much water do you use for gardening daily (in liters)?</label>
             <input type="number" id="gardening" placeholder="Enter liters" />
         </div>
+
+        <!-- Indirect Water Consumption Inputs -->
+        <div class="input-group">
+            <label for="meat">How many servings of meat do you eat daily?</label>
+            <input type="number" id="meat" placeholder="Enter servings" />
+        </div>
+        <div class="input-group">
+            <label for="dairy">How many servings of dairy do you consume daily?</label>
+            <input type="number" id="dairy" placeholder="Enter servings" />
+        </div>
+        <div class="input-group">
+            <label for="coffee">How many cups of coffee/tea do you drink daily?</label>
+            <input type="number" id="coffee" placeholder="Enter cups" />
+        </div>
+        <div class="input-group">
+            <label for="clothes">How often do you buy new clothes monthly?</label>
+            <input type="number" id="clothes" placeholder="Enter items per month" />
+        </div>
         <button class="submit-button" onclick="calculateFootprint()">Calculate Water Footprint</button>
 
         <div class="result" id="result"></div>
@@ -163,13 +181,27 @@
 
 <script>
     function calculateFootprint() {
+        // Direct Water Consumption
         let showers = parseFloat(document.getElementById('showers').value) || 0;
         let drinkingWater = parseFloat(document.getElementById('drinkingWater').value) || 0;
         let laundry = parseFloat(document.getElementById('laundry').value) || 0;
         let dishwashing = parseFloat(document.getElementById('dishwashing').value) || 0;
         let gardening = parseFloat(document.getElementById('gardening').value) || 0;
-        let footprint = (showers * 10) + drinkingWater + (laundry * 50 / 7) + (dishwashing * 10) + gardening;
-        document.getElementById('result').innerHTML = `Your estimated daily water footprint is <strong>${footprint.toFixed(2)} liters</strong>.`;
+
+        // Indirect Water Consumption
+        let meat = parseFloat(document.getElementById('meat').value) || 0;
+        let dairy = parseFloat(document.getElementById('dairy').value) || 0;
+        let coffee = parseFloat(document.getElementById('coffee').value) || 0;
+        let clothes = parseFloat(document.getElementById('clothes').value) || 0;
+
+        // Calculations
+        let directFootprint = (showers * 10) + drinkingWater + (laundry * 50 / 7) + (dishwashing * 10) + gardening;
+        let indirectFootprint = (meat * 1500) + (dairy * 1000) + (coffee * 140) + (clothes * 800 / 30);
+        let totalFootprint = directFootprint + indirectFootprint;
+
+        // Display Result
+        document.getElementById('result').innerHTML = `Your estimated daily water footprint is <strong>${totalFootprint.toFixed(2)} liters</strong>.<br/>
+        (Direct: ${directFootprint.toFixed(2)} liters, Indirect: ${indirectFootprint.toFixed(2)} liters)`;
     }
 </script>
 </body>

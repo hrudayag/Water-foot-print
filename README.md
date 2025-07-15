@@ -1,2 +1,2 @@
-# Water-foot-print
-A digital assignment for water resource management 
+# Water Footprint Calculator
+A water foot print calculator for water resource management course

@@ -1,2 +1,2 @@
 # Water Footprint Calculator
-A water foot print calculator for water resource management course
+This web-based tool estimates an individual's daily water usage, including both direct (e.g., showers, laundry) and indirect (e.g., food, clothing) consumption. Built using HTML, CSS, and JavaScript, it promotes awareness by displaying personalized results and sharing conservation tips. The project supports sustainable water use and is aligned with the goals of water resource management.
